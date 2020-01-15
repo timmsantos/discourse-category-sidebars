@@ -28,10 +28,10 @@
       const category = controller.get("category");
       const stickyOffset  = document.getElementsByClassName('d-header')[0].offsetHeight + 20;
       const sidebarWrapper = document.getElementById("fixed-wrapper");
-    
+
       function sidebarClasses(setup) {
-        $("body").addClass("custom-sidebar");
-        $(".topic-list").addClass("with-sidebar").addClass(settings.sidebar_side);
+        document.querySelector("body").classList.add("custom-sidebar");
+        document.querySelector(".topic-list").classList.add("with-sidebar", settings.sidebar_side);
         $(".sticky-sidebar").css("top", stickyOffset + "px");
       }
 
@@ -45,11 +45,11 @@
           })
         ];
         return h("div.category-sidebar-contents " + ".category-sidebar-" + category.slug, nodes);
-        
+
       } else if (settings.inherit_parent_sidebar && /^\/c\//.test(path) && category.parentCategory && setups[category.parentCategory.slug] != undefined && setups[category.slug] == undefined ) { // Subcategory pages if unset, take on parent
         const setup = setups[category.parentCategory.slug];
         sidebarClasses(setup);
-        
+
         const nodes = [
           h("div.cooked", {
             innerHTML: this.getPost(setup["post"])
@@ -66,10 +66,10 @@
             innerHTML: this.getPost(setup["post"])
           })
         ];
-        return h("div.category-sidebar-contents " + ".category-sidebar-all", nodes);      
+        return h("div.category-sidebar-contents " + ".category-sidebar-all", nodes);
      } else {
-        $("body").removeClass("custom-sidebar");
-        $(".topic-list").removeClass("with-sidebar");
+       document.querySelector("body").classList.remove("custom-sidebar");
+       document.querySelector(".topic-list").classList.remove("with-sidebar");
       }
     },
 
@@ -85,6 +85,9 @@
   });
 </script>
 
-<script type='text/x-handlebars' data-template-name='/connectors/before-topic-list-body/category-sidebar'>
+<script
+  type="text/x-handlebars"
+  data-template-name="/connectors/before-topic-list-body/category-sidebar"
+>
   <div class="category-sidebar"> {{mount-widget widget="category-sidebar"}} </div>
 </script>
