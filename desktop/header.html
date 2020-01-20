@@ -30,7 +30,7 @@
       const sidebarWrapper = document.getElementById("fixed-wrapper");
 
       function sidebarClasses(setup) {
-        document.querySelector("body").classList.add("custom-sidebar");
+        document.querySelector("body").classList.add("custom-sidebar", "sidebar-" + settings.sidebar_side);
         document.querySelector(".topic-list").classList.add("with-sidebar", settings.sidebar_side);
         $(".sticky-sidebar").css("top", stickyOffset + "px");
       }
@@ -68,8 +68,8 @@
         ];
         return h("div.category-sidebar-contents " + ".category-sidebar-all", nodes);
      } else {
-       document.querySelector("body").classList.remove("custom-sidebar");
-       document.querySelector(".topic-list").classList.remove("with-sidebar");
+       document.querySelector("body").classList.remove("custom-sidebar", "sidebar-" + settings.sidebar_side);
+       document.querySelector(".topic-list").classList.remove("with-sidebar", settings.sidebar_side);
       }
     },
 

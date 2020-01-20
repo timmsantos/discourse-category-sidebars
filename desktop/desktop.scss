@@ -1,16 +1,14 @@
 @import "common/foundation/variables";
-.topic-list.with-sidebar { // Don't show the sidebar
+.custom-sidebar .contents > .topic-list {
+  // Don't show the sidebar
   > div {
     display: none;
   }
 }
-@media screen and (min-width: 767px) { // Show the sidebar at 767px
-  .topic-list.with-sidebar {
-    display: grid;
-    grid-column-gap: 2%;
-    align-items: start;
-    grid-template-rows: 50px auto;
-    &.left {
+@media screen and (min-width: 767px) {
+  // Show the sidebar at 767px
+  .custom-sidebar {
+    &.sidebar-left .contents > .topic-list {
       grid-template-columns: 20% 78%;
       @media screen and (max-width: 900px) {
         grid-template-columns: 25% 73%;
@@ -19,7 +17,7 @@
         "sidebar head"
         "sidebar body";
     }
-    &.right {
+    &.sidebar-right .contents > .topic-list {
       grid-template-columns: 78% 20%;
       @media screen and (max-width: 900px) {
         grid-template-columns: 73% 25%;
@@ -28,54 +26,65 @@
         "head sidebar"
         "body sidebar";
     }
-    thead {
-      grid-area: head;
-      display: table;
-      align-self: end;
-    }
-    > .category-sidebar {
-      overflow: hidden;
-      display: flex;
-      margin-top: 15px;
-      grid-area: sidebar;
-      order: 3;
-      padding: 0;
-      position: relative;
-      @if $stick-on-scroll == "true" {
-        position: sticky;
-        top: 80px;
-        max-height: 70vh;
-        @media screen and (max-height: 925px) {
-          max-height: 55vh;
-        }
-        overflow-y: auto;
+    .contents > .topic-list {
+      display: grid;
+      grid-column-gap: 2%;
+      align-items: start;
+      grid-template-rows: 50px auto;
+
+      thead {
+        grid-area: head;
+        display: table;
+        align-self: end;
       }
-      .cooked {
-        img, video, iframe {
-          width: 100%;
-          height: auto;
+      > .category-sidebar {
+        overflow: hidden;
+        display: flex;
+        margin-top: 15px;
+        grid-area: sidebar;
+        order: 3;
+        padding: 0;
+        position: relative;
+        @if $stick-on-scroll == "true" {
+          position: sticky;
+          top: 80px;
+          max-height: 70vh;
+          @media screen and (max-height: 925px) {
+            max-height: 55vh;
+          }
+          overflow-y: auto;
         }
-        img.emoji {
-          width: 20px;
-        }
-        ul, ol {
-          padding-left: 30px;
+        .cooked {
+          img,
+          video,
+          iframe {
+            width: 100%;
+            height: auto;
+          }
+          img.emoji {
+            width: 20px;
+          }
+          ul,
+          ol {
+            padding-left: 30px;
+          }
         }
       }
-    }
-    tbody {
-      grid-area: body;
-      display: table;
+      tbody {
+        grid-area: body;
+        display: table;
+      }
     }
   }
 }
 
 .custom-sidebar {
-  #list-area .show-more.has-topics .alert { // New topic notification needs to be narrower
+  #list-area .show-more.has-topics .alert {
+    // New topic notification needs to be narrower
     box-sizing: border-box;
     width: 78%;
     @media screen and (max-width: 900px) {
-    width: 73%;
+      width: 73%;
     }
   }
 }
@@ -83,7 +92,7 @@
 // IE11 support, feel free to toss this into the sea
 
 @media screen and (min-width: 767px) {
-  .topic-list.with-sidebar {
+  .custom-sidebar .contents > .topic-list {
     display: -ms-grid;
     -ms-grid-columns: 78% 20%;
     -ms-grid-rows: 50px auto;
@@ -106,4 +115,3 @@
     }
   }
 }
-
