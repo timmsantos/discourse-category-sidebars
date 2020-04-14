@@ -17,6 +17,7 @@
   const container = Discourse.__container__;
   const { h } = require("virtual-dom");
   const { ajax } = require("discourse/lib/ajax");
+  const PostCooked = require("discourse/widgets/post-cooked").default;
   const postCache = {};
 
   api.createWidget("category-sidebar", {
@@ -40,9 +41,7 @@
         sidebarClasses(setup);
 
         const nodes = [
-          h("div.cooked", {
-            innerHTML: this.getPost(setup["post"])
-          })
+          this.getPost(setup["post"])
         ];
         return h("div.category-sidebar-contents " + ".category-sidebar-" + category.slug, nodes);
 
@@ -51,9 +50,7 @@
         sidebarClasses(setup);
 
         const nodes = [
-          h("div.cooked", {
-            innerHTML: this.getPost(setup["post"])
-          })
+          this.getPost(setup["post"])
         ];
         return h("div.category-sidebar-contents " + ".category-sidebar-", nodes);
 
@@ -62,9 +59,7 @@
         sidebarClasses(setup);
         console.log(setups["all"]);
         const nodes = [
-          h("div.cooked", {
-            innerHTML: this.getPost(setup["post"])
-          })
+          this.getPost(setup["post"])
         ];
         return h("div.category-sidebar-contents " + ".category-sidebar-all", nodes);
      } else {
@@ -76,7 +71,7 @@
     getPost(id) {
       if (!postCache[id]) {
         ajax(`/t/${id}.json`).then(response => {
-          postCache[id] = response.post_stream.posts[0].cooked;
+          postCache[id] = new PostCooked({ cooked: response.post_stream.posts[0].cooked });
           this.scheduleRerender();
         });
       }
