@@ -35,6 +35,7 @@
         grid-area: head;
         display: table;
         align-self: end;
+        width: 100%; // Safari
       }
       > .category-sidebar {
         overflow: hidden;
