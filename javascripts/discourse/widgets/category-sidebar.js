@@ -20,7 +20,7 @@ function parseSetups(raw) {
 
 function createSidebar(taxonomy) {
   console.log("taxonomy:" + setups[taxonomy]);
-  const setup = setups["tester-tag"];
+  const setup = setups[taxonomy];
   const post = [this.getPost(setup["post"])];
 
   document
@@ -66,7 +66,6 @@ createWidget("category-sidebar", {
         "tag_id"
       );
     console.log("tag: " + isTagList);
-    console.log("current route: " + currentRouteParams);
     console.log("category: " + isCategoryTopicList);
 
     if (setups["all"] && !isCategoryTopicList && !isTagList) {
@@ -100,8 +99,7 @@ createWidget("category-sidebar", {
       ) {
         return createSidebar.call(this, categorySlug);
       }
-    }
-    if (isTagList && settings.enable_for_tags && setups[currentRouteParams.tag_id]) {
+    } else if (isTagList && settings.enable_for_tags && setups[currentRouteParams.tag_id]) {
       const tagSlug = currentRouteParams.tag_id;
       return createSidebar(this, tagSlug);
     }
