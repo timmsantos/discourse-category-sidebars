@@ -67,9 +67,9 @@ createWidget("category-sidebar", {
     const isTagList = currentRouteParams.hasOwnProperty(
         "tag_id"
       );
-    console.log(isTagList);
-    console.log(currentRouteParams);
-    console.log(isCategoryTopicList);
+    console.log("tag: " + isTagList);
+    console.log("current route: " + currentRouteParams);
+    console.log("category: " + isCategoryTopicList);
 
     if (setups["all"] && !isCategoryTopicList && !isTagList) {
       return createSidebar.call(this, "all");
@@ -106,7 +106,7 @@ createWidget("category-sidebar", {
       const tagSlug = currentRouteParams.tag_id;
       console.log("The FF is currentRouteParams.tag_id;");
       console.log(currentRouteParams.tag_id);
-      return createSidebar(this, tagSlug);
+      return createSidebar(this, currentRouteParams.tag_id);
     }
 
     // Remove classes if no sidebar returned
