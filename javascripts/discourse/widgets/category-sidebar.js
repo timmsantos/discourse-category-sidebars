@@ -35,8 +35,8 @@ function createSidebar(taxonomy) {
   );
 }
 
-//added to modify component for tags
-const container = Discourse.__container__;
+// //added to modify component for tags
+// const container = Discourse.__container__;
 const postCache = {};
 const setups = parseSetups(settings.setup);
 
@@ -58,16 +58,21 @@ createWidget("category-sidebar", {
 
   html() {
     //added path to tags
-    console.log("html");
-    const path = window.location.pathname;
-    const controller = container.lookup("controller:tags-show");
-    const tag = controller.get("tag");
+    // console.log("html");
+    // const path = window.location.pathname;
+    // const controller = container.lookup("controller:tags-show");
+    // const tag = controller.get("tag");
 
     const router = getOwner(this).lookup("router:main");
     const currentRouteParams = router.currentRoute.params;
     const isCategoryTopicList = currentRouteParams.hasOwnProperty(
       "category_slug_path_with_id"
     );
+    const isTagList = currentRouteParams.hasOwnProperty(
+        "tag_slug_path_with_id"
+      );
+    console.log(isTagList);
+    console.log(currentRouteParams);
 
     if (setups["all"] && !isCategoryTopicList) {
       return createSidebar.call(this, "all");
@@ -77,14 +82,14 @@ createWidget("category-sidebar", {
       const categorySlug = categorySlugPath[0];
       const subcategorySlug = categorySlugPath[categorySlugPath.length - 2];
 
-      if(setting.enable_for_tags) {
-        console.log("tag settings enabled");
-        if (/^\/community\/forums\/tag\//.test(path) && setups[tag.id]) {
-            console.log(tag.id);
-            const tagSetup = setups[tag.id];
-            return createSidebar.call(this, tagSetup);
-        }
-    }
+    //   if(setting.enable_for_tags) {
+    //     console.log("tag settings enabled");
+    //     if (/^\/community\/forums\/tag\//.test(path) && setups[tag.id]) {
+    //         console.log(tag.id);
+    //         const tagSetup = setups[tag.id];
+    //         return createSidebar.call(this, tagSetup);
+    //     }
+    // }
 
       // If set, show category sidebar
 
