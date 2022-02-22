@@ -19,7 +19,7 @@ function parseSetups(raw) {
 }
 
 function createSidebar(taxonomy) {
-  console.log(concat("taxonomy:" + taxonomy));
+  console.log("taxonomy:" + taxonomy);
   const setup = setups[taxonomy];
   const post = [this.getPost(setup["post"])];
 
