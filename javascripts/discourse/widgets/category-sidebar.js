@@ -69,7 +69,7 @@ createWidget("category-sidebar", {
       "category_slug_path_with_id"
     );
     const isTagList = currentRouteParams.hasOwnProperty(
-        "tag_slug_path_with_id"
+        "tag_id"
       );
     console.log(isTagList);
     console.log(currentRouteParams);
