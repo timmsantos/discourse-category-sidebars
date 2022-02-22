@@ -78,11 +78,10 @@ createWidget("category-sidebar", {
         currentRouteParams.category_slug_path_with_id.split("/");
       const categorySlug = categorySlugPath[0];
       const subcategorySlug = categorySlugPath[categorySlugPath.length - 2];
-      
+      console.log("categorySlug: " + categorySlug);
       // If set, show category sidebar
 
       if (categorySlug && !subcategorySlug && setups[categorySlug]) {
-        console.log("categorySlug: " + categorySlug);
         return createSidebar.call(this, categorySlug);
       }
 
@@ -103,7 +102,7 @@ createWidget("category-sidebar", {
         return createSidebar.call(this, categorySlug);
       }
     }
-    if (isTagList && settings.enable_for_tags) {
+    if (isTagList && settings.enable_for_tags && setups[currentRouteParams.tag_id]) {
       const tagSlug = currentRouteParams.tag_id;
       console.log("The FF is currentRouteParams.tag_id;");
       console.log(currentRouteParams.tag_id);
