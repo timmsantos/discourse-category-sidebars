@@ -15,13 +15,12 @@ function parseSetups(raw) {
     parsed[category] = parsed[category] || defaultSettings();
     parsed[category]["post"] = value;
   });
-  console.log("parsed" + parsed);
   return parsed;
 }
 
 function createSidebar(taxonomy) {
   console.log("taxonomy:" + setups[taxonomy]);
-  const setup = setups[taxonomy];
+  const setup = setups["tester-tag"];
   const post = [this.getPost(setup["post"])];
 
   document
