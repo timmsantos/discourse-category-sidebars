@@ -66,6 +66,7 @@ createWidget("category-sidebar", {
         "tag_id"
       );
     console.log("tag: " + isTagList + ", " + currentRouteParams.tag_id);
+    console.log("Route Parameters" + currentRouteParams);
     console.log("category: " + isCategoryTopicList + ", " + currentRouteParams.category_slug_path_with_id);
 
     if (setups["all"] && !isCategoryTopicList && !isTagList) {
