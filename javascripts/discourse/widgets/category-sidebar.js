@@ -19,6 +19,7 @@ function parseSetups(raw) {
 }
 
 function createSidebar(taxonomy) {
+  console.log(taxonomy);
   const setup = setups[taxonomy];
   const post = [this.getPost(setup["post"])];
 
@@ -103,9 +104,9 @@ createWidget("category-sidebar", {
     }
     if (isTagList && settings.enable_for_tags) {
       const tagSlug = currentRouteParams.tag_id;
-      return createSidebar(this, tagSlug)
+      return createSidebar(this, tagSlug);
     }
-    
+
     // Remove classes if no sidebar returned
     document
       .querySelector("body")
