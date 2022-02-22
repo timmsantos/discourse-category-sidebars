@@ -15,6 +15,7 @@ function parseSetups(raw) {
     parsed[category] = parsed[category] || defaultSettings();
     parsed[category]["post"] = value;
   });
+  console.log("parsed" + parsed);
   return parsed;
 }
 
@@ -36,8 +37,6 @@ function createSidebar(taxonomy) {
   );
 }
 
-// //added to modify component for tags
-// const container = Discourse.__container__;
 const postCache = {};
 const setups = parseSetups(settings.setup);
 
