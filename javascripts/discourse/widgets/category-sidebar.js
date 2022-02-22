@@ -79,6 +79,7 @@ createWidget("category-sidebar", {
       const categorySlug = categorySlugPath[0];
       const subcategorySlug = categorySlugPath[categorySlugPath.length - 2];
       console.log("categorySlug: " + categorySlug);
+      console.log("split: " + currentRouteParams.category_slug_path_with_id.split("/"))
       // If set, show category sidebar
 
       if (categorySlug && !subcategorySlug && setups[categorySlug]) {
