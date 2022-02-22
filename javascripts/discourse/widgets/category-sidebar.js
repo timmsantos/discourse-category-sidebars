@@ -73,6 +73,7 @@ createWidget("category-sidebar", {
       );
     console.log(isTagList);
     console.log(currentRouteParams);
+    console.log(isCategoryTopicList);
 
     if (setups["all"] && !isCategoryTopicList) {
       return createSidebar.call(this, "all");
