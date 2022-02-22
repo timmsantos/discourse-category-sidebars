@@ -19,7 +19,7 @@ function parseSetups(raw) {
 }
 
 function createSidebar(taxonomy) {
-  console.log("taxonomy:" + taxonomy);
+  console.log("taxonomy:" + setups[taxonomy]);
   const setup = setups[taxonomy];
   const post = [this.getPost(setup["post"])];
 
@@ -105,9 +105,7 @@ createWidget("category-sidebar", {
     }
     if (isTagList && settings.enable_for_tags && setups[currentRouteParams.tag_id]) {
       const tagSlug = currentRouteParams.tag_id;
-      console.log("The FF is currentRouteParams.tag_id;");
-      console.log(currentRouteParams.tag_id);
-      return createSidebar(this, "tester-tag");
+      return createSidebar(this, tagSlug);
     }
 
     // Remove classes if no sidebar returned
