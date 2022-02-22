@@ -104,6 +104,8 @@ createWidget("category-sidebar", {
     }
     if (isTagList && settings.enable_for_tags) {
       const tagSlug = currentRouteParams.tag_id;
+      console.log("The FF is currentRouteParams.tag_id;")
+      console.log(currentRouteParams.tag_id)
       return createSidebar(this, tagSlug);
     }
 
