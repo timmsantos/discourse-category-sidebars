@@ -4,13 +4,18 @@ setup:
   description: |
     Each line should be in the format of "<code>category-slug</code>, <code>ID</code>".<br/><br/>
     <ul>
-    <li>The category slug is the category name from its url, for example /c/<b>site-feedback/3</b></li>
+    <li>The category slug is the category name from its url, for example /c/<b>site-feedback</b>/3</li>
 
     <li>The topic ID is the first number in its url, for example /t/welcome-to-discourse/<b>8</b>/3</li>
 
     <li>If you'd like to set a sidebar for /latest, /top, /new, /unread, use <code>all</code> as the category slug</li>
     </ul>
     <p>For performance reasons it's recommended that you close  sidebar topics so there aren't any replies</p>
+
+enable_for_tags:
+  default: true
+  description: |
+    Enable this component for tag pages: /tag/<b>tagname</b> 
 
 sidebar_side: 
   default: right

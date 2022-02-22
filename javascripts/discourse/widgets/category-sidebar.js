@@ -4,6 +4,9 @@ import { getOwner } from "discourse-common/lib/get-owner";
 import { h } from "virtual-dom";
 import PostCooked from "discourse/widgets/post-cooked";
 
+//added to modify component for tags
+const container = Discourse.__container__;
+
 function defaultSettings() {
   return {};
 }
@@ -55,6 +58,11 @@ createWidget("category-sidebar", {
   },
 
   html() {
+    //added path to tags
+    const path = window.location.pathname;
+    const controller = container.lookup("controller:tags-show");
+    const tag = controller.get("tag");
+
     const router = getOwner(this).lookup("router:main");
     const currentRouteParams = router.currentRoute.params;
     const isCategoryTopicList = currentRouteParams.hasOwnProperty(
@@ -68,6 +76,13 @@ createWidget("category-sidebar", {
         currentRouteParams.category_slug_path_with_id.split("/");
       const categorySlug = categorySlugPath[0];
       const subcategorySlug = categorySlugPath[categorySlugPath.length - 2];
+
+      if(setting.enable_for_tags) {
+        if (/^\/community\/forums\/tag\//.test(path) && setups[tag.id]) {
+            const tagSetup = setups[tag.id];
+            return createSidebar.call(this, tagSetup);
+        }
+    }
 
       // If set, show category sidebar
 
