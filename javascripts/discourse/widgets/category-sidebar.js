@@ -82,6 +82,7 @@ createWidget("category-sidebar", {
       // If set, show category sidebar
 
       if (categorySlug && !subcategorySlug && setups[categorySlug]) {
+        console.log("categorySlug: " + categorySlug);
         return createSidebar.call(this, categorySlug);
       }
 
