@@ -106,7 +106,7 @@ createWidget("category-sidebar", {
       const tagSlug = currentRouteParams.tag_id;
       console.log("The FF is currentRouteParams.tag_id;");
       console.log(currentRouteParams.tag_id);
-      return createSidebar(this, currentRouteParams.tag_id);
+      return createSidebar(this, str(currentRouteParams.tag_id));
     }
 
     // Remove classes if no sidebar returned
