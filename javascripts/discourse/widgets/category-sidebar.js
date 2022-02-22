@@ -58,6 +58,7 @@ createWidget("category-sidebar", {
 
   html() {
     //added path to tags
+    console.log("html");
     const path = window.location.pathname;
     const controller = container.lookup("controller:tags-show");
     const tag = controller.get("tag");
@@ -77,9 +78,9 @@ createWidget("category-sidebar", {
       const subcategorySlug = categorySlugPath[categorySlugPath.length - 2];
 
       if(setting.enable_for_tags) {
-        console.log("tag settings enabled")
+        console.log("tag settings enabled");
         if (/^\/community\/forums\/tag\//.test(path) && setups[tag.id]) {
-            console.log(tag.id)
+            console.log(tag.id);
             const tagSetup = setups[tag.id];
             return createSidebar.call(this, tagSetup);
         }
