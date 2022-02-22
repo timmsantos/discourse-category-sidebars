@@ -4,9 +4,6 @@ import { getOwner } from "discourse-common/lib/get-owner";
 import { h } from "virtual-dom";
 import PostCooked from "discourse/widgets/post-cooked";
 
-//added to modify component for tags
-const container = Discourse.__container__;
-
 function defaultSettings() {
   return {};
 }
@@ -38,6 +35,8 @@ function createSidebar(taxonomy) {
   );
 }
 
+//added to modify component for tags
+const container = Discourse.__container__;
 const postCache = {};
 const setups = parseSetups(settings.setup);
 
@@ -78,7 +77,9 @@ createWidget("category-sidebar", {
       const subcategorySlug = categorySlugPath[categorySlugPath.length - 2];
 
       if(setting.enable_for_tags) {
+        console.log("tag settings enabled")
         if (/^\/community\/forums\/tag\//.test(path) && setups[tag.id]) {
+            console.log(tag.id)
             const tagSetup = setups[tag.id];
             return createSidebar.call(this, tagSetup);
         }
