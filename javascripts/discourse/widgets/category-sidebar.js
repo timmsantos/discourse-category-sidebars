@@ -19,7 +19,7 @@ function parseSetups(raw) {
 }
 
 function createSidebar(taxonomy) {
-  console.log("taxonomy:" + setups[taxonomy]);
+  console.log("taxonomy:" + JSON.stringify(setups[taxonomy]));
   const setup = setups[taxonomy];
   const post = [this.getPost(setup["post"])];
 
@@ -66,7 +66,6 @@ createWidget("category-sidebar", {
         "tag_id"
       );
     console.log("tag: " + isTagList + ", " + currentRouteParams.tag_id);
-    console.log("Route Parameters" + currentRouteParams);
     console.log("category: " + isCategoryTopicList + ", " + currentRouteParams.category_slug_path_with_id);
 
     if (setups["all"] && !isCategoryTopicList && !isTagList) {
