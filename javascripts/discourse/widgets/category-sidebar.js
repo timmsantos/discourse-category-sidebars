@@ -101,7 +101,7 @@ createWidget("category-sidebar", {
       }
     } else if (isTagList && settings.enable_for_tags && setups[currentRouteParams.tag_id]) {
       const tagSlug = currentRouteParams.tag_id;
-      return createSidebar(this, tagSlug);
+      return createSidebar.call(this, tagSlug);
     }
 
     // Remove classes if no sidebar returned
