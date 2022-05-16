@@ -7,7 +7,6 @@ import PostCooked from "discourse/widgets/post-cooked";
 function defaultSettings() {
   return {};
 }
-
 function parseSetups(raw) {
   const parsed = {};
   raw.split("|").forEach((setting) => {
