@@ -66,8 +66,12 @@ createWidget("category-sidebar", {
     const isTagList = currentRouteParams.hasOwnProperty(
         "tag_id"
       );
+      const isGroupList = currentRouteParams.hasOwnProperty(
+        "group_id"
+      );
     // console.log("tag: " + isTagList + ", " + currentRouteParams.tag_id);
     // console.log("category: " + isCategoryTopicList + ", " + currentRouteParams.category_slug_path_with_id);
+    console.log("group: " + isGroupList + ", " + currentRouteParams.group_id);
 
     if (setups["all"] && !isCategoryTopicList && !isTagList) {
       return createSidebar.call(this, "all");
