@@ -59,15 +59,15 @@ createWidget("category-sidebar", {
 
     const router = getOwner(this).lookup("router:main");
     const currentRouteParams = router.currentRoute.params;
-    console.log(currentRouteParams);
+    console.log("current route:" + currentRouteParams);
     const isCategoryTopicList = currentRouteParams.hasOwnProperty(
       "category_slug_path_with_id"
     );
     const isTagList = currentRouteParams.hasOwnProperty(
         "tag_id"
       );
-    console.log("tag: " + isTagList + ", " + currentRouteParams.tag_id);
-    console.log("category: " + isCategoryTopicList + ", " + currentRouteParams.category_slug_path_with_id);
+    // console.log("tag: " + isTagList + ", " + currentRouteParams.tag_id);
+    // console.log("category: " + isCategoryTopicList + ", " + currentRouteParams.category_slug_path_with_id);
 
     if (setups["all"] && !isCategoryTopicList && !isTagList) {
       return createSidebar.call(this, "all");
@@ -76,8 +76,8 @@ createWidget("category-sidebar", {
         currentRouteParams.category_slug_path_with_id.split("/");
       const categorySlug = categorySlugPath[0];
       const subcategorySlug = categorySlugPath[categorySlugPath.length - 2];
-      console.log("categorySlug: " + categorySlug);
-      console.log("split: " + currentRouteParams.category_slug_path_with_id.split("/"));
+    //   console.log("categorySlug: " + categorySlug);
+    //   console.log("split: " + currentRouteParams.category_slug_path_with_id.split("/"));
       // If set, show category sidebar
 
       if (categorySlug && !subcategorySlug && setups[categorySlug]) {
