@@ -59,7 +59,7 @@ createWidget("category-sidebar", {
 
     const router = getOwner(this).lookup("router:main");
     const currentRouteParams = router.currentRoute.params;
-    console.log("current route: " + currentRouteParams.JSON);
+    console.log("current route: " + currentRouteParams.all);
     const isCategoryTopicList = currentRouteParams.hasOwnProperty(
       "category_slug_path_with_id"
     );
@@ -107,7 +107,7 @@ createWidget("category-sidebar", {
     } else if (isTagList && settings.enable_for_tags && setups[currentRouteParams.tag_id]) {
       const tagSlug = currentRouteParams.tag_id;
       return createSidebar.call(this, tagSlug);
-    }
+    } 
 
     // Remove classes if no sidebar returned
     document
