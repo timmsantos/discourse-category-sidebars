@@ -59,6 +59,7 @@ createWidget("category-sidebar", {
 
     const router = getOwner(this).lookup("router:main");
     const currentRouteParams = router.currentRoute.params;
+    console.log(currentRouteParams);
     const isCategoryTopicList = currentRouteParams.hasOwnProperty(
       "category_slug_path_with_id"
     );
