@@ -67,7 +67,7 @@ createWidget("category-sidebar", {
       );
     
     if (window.location.pathname.indexOf('/g/') > 0){
-        var winPath = window.location.pathname.split('/g/');
+        const winPath = window.location.pathname.split('/g/');
         console.log("you're in a group");
     }
     // console.log("tag: " + isTagList + ", " + currentRouteParams.tag_id);
