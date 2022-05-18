@@ -66,7 +66,7 @@ createWidget("category-sidebar", {
         "tag_id"
     );
 
-    console.log(router.currentRoute.all)
+    console.log("current route params: " + router.currentRoute.currentRouteParams)
     
     if (window.location.pathname.indexOf('/g/') >= 0) {
         //const winPath = window.location.pathname.split('/g/');
