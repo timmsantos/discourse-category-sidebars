@@ -107,9 +107,9 @@ createWidget("category-sidebar", {
       return createSidebar.call(this, tagSlug);
     } else if (settings.enable_for_groups) {
         console.log('setting is enabled');
-        url = window.location.pathname;
+        const url = window.location.pathname;
         console.log("current URL: " + url);
-        split_url = url.split('/g/');
+        const split_url = url.split('/g/');
         if (split_url > 0){
             console.log("URL Split: " + split_url);
             if (setups[split_url[1]])
