@@ -66,12 +66,8 @@ createWidget("category-sidebar", {
         "tag_id"
     );
 
-    console.log("current route params: " + router.currentRoute.currentRouteParams)
+    // console.log("current route params: " + router.currentRoute.currentRouteParams)
     
-    if (window.location.pathname.indexOf('/g/') >= 0) {
-        //const winPath = window.location.pathname.split('/g/');
-        console.log("you're in a group");
-    }
     //console.log("tag: " + isTagList + ", " + currentRouteParams.tag_id);
     //console.log("category: " + isCategoryTopicList + ", " + currentRouteParams.category_slug_path_with_id);
 
@@ -109,7 +105,14 @@ createWidget("category-sidebar", {
     } else if (isTagList && settings.enable_for_tags && setups[currentRouteParams.tag_id]) {
       const tagSlug = currentRouteParams.tag_id;
       return createSidebar.call(this, tagSlug);
-    } 
+    } else if (setting.enable_for_groups) {
+        url = window.location.pathname;
+        split_url = url.split('/g/');
+        if (split_url > 0){
+            if (setups[split_url[1]])
+            return createSidebar.call(this, split_url[1]);
+        }
+    }
 
     // Remove classes if no sidebar returned
     document

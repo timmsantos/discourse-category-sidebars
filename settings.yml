@@ -17,6 +17,11 @@ enable_for_tags:
   description: |
     Enable this component for tag pages: /tag/<b>tagname</b> 
 
+enable_for_groups:
+  default: true
+  description: |
+    Enable this component for group pages: /g/<b>group-name</b> 
+
 sidebar_side: 
   default: right
   type: enum
